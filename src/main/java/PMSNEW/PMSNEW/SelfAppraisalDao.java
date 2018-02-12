@@ -52,8 +52,9 @@ public class SelfAppraisalDao {
 	}
 	    
 	    public List<SelfAppraisal> getSelfAppraisalSections(String pusername,int pmode,int apprempid){  
-		    return template.query("select distinct section,sectioncolorder from  view_getappraisalrecords where user_name='"+pusername+"' and phaseid="+pmode+" and apprempid="+apprempid+" order by SectionColOrder" ,new RowMapper<SelfAppraisal>(){  
-		        public SelfAppraisal mapRow(ResultSet rs, int row) throws SQLException {  
+		    //return template.query("select distinct section,sectioncolorder from  view_getappraisalrecords where user_name='"+pusername+"' and phaseid="+pmode+" and apprempid="+apprempid+" order by SectionColOrder" ,new RowMapper<SelfAppraisal>(){  
+	    	return template.query("select distinct section,sectioncolorder from  view_getappraisalrecords where phaseid="+pmode+" and apprempid="+apprempid+" order by SectionColOrder" ,new RowMapper<SelfAppraisal>(){  
+	    	public SelfAppraisal mapRow(ResultSet rs, int row) throws SQLException {  
 		        	SelfAppraisal e=new SelfAppraisal();  
 		            e.setSection(rs.getString(1));
 		            e.setSectioncolorder(rs.getInt(2));

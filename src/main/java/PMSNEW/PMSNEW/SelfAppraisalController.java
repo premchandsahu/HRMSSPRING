@@ -120,7 +120,7 @@ public class SelfAppraisalController {
 		SelfAppraisalAlls selfAppraisalalls = new SelfAppraisalAlls();
 		selfAppraisalalls.setSelfappraisalall(list);
 		modelandview.addObject("selfAppraisalAlls",selfAppraisalalls);
-		listsection=dao.getSelfAppraisalSections(vusername,sapprphaseid,sapprempid);   
+		listsection=dao.getSelfAppraisalSections(vusername,sapprphaseid==4?3:sapprphaseid,sapprempid);   
 		modelandview.addObject("listsection",listsection);
 		modelandview.addObject("username",vusername);
 		modelandview.addObject("apprphaseid",sapprphaseid);

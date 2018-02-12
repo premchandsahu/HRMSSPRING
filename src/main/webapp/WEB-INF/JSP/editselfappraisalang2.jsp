@@ -231,7 +231,7 @@ tr:nth-child(even) {
 		<c:set var="rating1" value="${r.rating1}"/>
 		<c:set var="rating2" value="${r.rating2}"/>
 	</c:if>
-	<c:if test= "${apprphaseid eq 3}">
+	<c:if test= "${apprphaseid ge 3}">
 		<c:set var="rating1" value="${r.rating1}"/>
 		<c:set var="rating2" value="${r.rating2}"/>
 		<c:set var="rating3" value="${r.rating3}"/>
@@ -296,7 +296,15 @@ document.getElementById("defaultOpen").click();
      
 
 <div style="width:100%;text-align:left;margin:1%">	
-<input type="submit" name="action" value="Save" ${disabled}/><input type="submit" name="action" id="subbtn" value="Submit" ${disabled}/>  </div>
+<input type="submit" name="action" value="Save" ${disabled}/>
+<c:if test="${apprphaseid eq 4}">
+<input type="submit" name="action" id="subbtn" value="Submit" disabled/>  
+</c:if>
+<c:if test="${apprphaseid ne 4}">
+<input type="submit" name="action" id="subbtn" value="Submit" ${disabled}/>  
+</c:if>
+
+</div>
 </form:form>
 </body>
 
