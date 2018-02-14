@@ -1,4 +1,4 @@
-package PMSNEW.PMSNEW;
+package com.pms.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,7 +7,10 @@ import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
-import PMSNEW.PMSNEW.SelfAppraisal;
+import com.pms.model.Score;
+import com.pms.model.SelfAppraisal;
+import com.pms.model.SelfAppraisalAll;
+import com.pms.model.Subordinate;
 
 public class SelfAppraisalDao {
 

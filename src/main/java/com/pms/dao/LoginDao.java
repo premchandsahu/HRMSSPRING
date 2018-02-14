@@ -1,4 +1,4 @@
-package PMSNEW.PMSNEW;
+package com.pms.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,8 +8,8 @@ import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
-import PMSNEW.PMSNEW.Login;
-import PMSNEW.PMSNEW.Menu;
+import com.pms.model.Login;
+import com.pms.model.Menu;
 
 public class LoginDao {
 

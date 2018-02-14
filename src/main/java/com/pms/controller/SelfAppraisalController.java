@@ -1,4 +1,4 @@
-package PMSNEW.PMSNEW;
+package com.pms.controller;
 
 import java.io.InputStream;
 import java.util.List;
@@ -22,8 +22,19 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
-import PMSNEW.PMSNEW.*;
-import PMSNEW.PMSNEW.SelfAppraisals;
+import com.pms.*;
+import com.pms.dao.LoginDao;
+import com.pms.dao.MailDao;
+import com.pms.dao.SelfAppraisalDao;
+import com.pms.model.Login;
+import com.pms.model.MailTemplate;
+import com.pms.model.Menu;
+import com.pms.model.Score;
+import com.pms.model.SelfAppraisal;
+import com.pms.model.SelfAppraisalAll;
+import com.pms.model.SelfAppraisalAlls;
+import com.pms.model.SelfAppraisals;
+import com.pms.model.Subordinate;
 
 @Controller  
 
@@ -103,7 +114,7 @@ public class SelfAppraisalController {
 		modelandview.addObject("username",vusername);
 		modelandview.addObject("apprphaseid",apprphaseid);
 		modelandview.addObject("apprempid", apprempid);
-		modelandview.setViewName("editselfappraisalang2");
+		modelandview.setViewName("appraisal");
         return modelandview;
        
        
@@ -130,7 +141,7 @@ public class SelfAppraisalController {
 		listscore=dao.getScore(sapprempid);
 		modelandview.addObject("listscore",listscore);
 		
-		modelandview.setViewName("editselfappraisalang2");
+		modelandview.setViewName("appraisal");
         return modelandview;
        
        

@@ -1,4 +1,4 @@
-package PMSNEW.PMSNEW;
+package com.pms.dao;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 

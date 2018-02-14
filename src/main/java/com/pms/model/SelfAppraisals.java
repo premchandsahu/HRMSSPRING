@@ -1,7 +1,8 @@
-package PMSNEW.PMSNEW;
+package com.pms.model;
 
 import java.util.List;
-import PMSNEW.PMSNEW.SelfAppraisal;
+
+import com.pms.model.SelfAppraisal;
 
 public class SelfAppraisals {
 

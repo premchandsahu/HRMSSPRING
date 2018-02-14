@@ -1,4 +1,4 @@
-package PMSNEW.PMSNEW;
+package com.pms.model;
 
 import java.util.List;
 

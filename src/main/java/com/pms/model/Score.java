@@ -1,4 +1,4 @@
-package PMSNEW.PMSNEW;
+package com.pms.model;
 
 public class Score {
 double rating1,rating2,rating3;

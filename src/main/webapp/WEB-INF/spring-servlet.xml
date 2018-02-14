@@ -9,7 +9,7 @@ http://www.springframework.org/schema/context
 http://www.springframework.org/schema/context/spring-context-3.0.xsd">    
   
 <context:annotation-config />  
-<context:component-scan base-package="PMSNEW.PMSNEW"></context:component-scan>  
+<context:component-scan base-package="com.pms"></context:component-scan>  
   
 <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
 <property name="prefix" value="/WEB-INF/JSP/"></property>  
@@ -47,23 +47,23 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
     </bean>
       
   
-<bean id="dao" class="PMSNEW.PMSNEW.SelfAppraisalDao">  
+<bean id="dao" class="com.pms.dao.SelfAppraisalDao">  
 <property name="template" ref="jt"></property>  
 </bean>  
 
-<bean id="logindao" class="PMSNEW.PMSNEW.LoginDao">  
+<bean id="logindao" class="com.pms.dao.LoginDao">  
 <property name="template" ref="jt"></property>  
 </bean>  
 
-<bean id="mdao" class="PMSNEW.PMSNEW.MailDao">  
+<bean id="mdao" class="com.pms.dao.MailDao">  
 <property name="template" ref="jt"></property>  
 </bean>  
 
-<bean id="adao" class="PMSNEW.PMSNEW.AdminDao">  
+<bean id="adao" class="com.pms.dao.AdminDao">  
 <property name="template" ref="jt"></property>  
 </bean>
 
-<bean id="sdao" class="PMSNEW.PMSNEW.SendBackDao">  
+<bean id="sdao" class="com.pms.dao.SendBackDao">  
 <property name="template" ref="jt"></property>  
 </bean> 
 

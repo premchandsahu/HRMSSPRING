@@ -10,8 +10,6 @@
 <style type="text/css">
   <%@include file="mystyle1.css" %>
 </style>
-
-
 <div id="div2">
 <p id="company">third(i)</p>
 <p id="slogan">Information. Intelligence. Insight. </p>

@@ -6,7 +6,6 @@
 <div id="div2">
 <p id="company">third(i)</p>
 <p id="slogan">Information. Intelligence. Insight. </p>
-
 <button id="logout" style="float:right" onclick="location.href='/PMSSPRING/logout'">Logout</button> 
 </div><br><br>
 <div>

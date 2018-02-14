@@ -1,4 +1,4 @@
-package PMSNEW.PMSNEW;
+package com.pms.controller;
 
 import java.util.List;
 import javax.mail.internet.MimeMessage;
@@ -13,6 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.pms.dao.AdminDao;
+import com.pms.dao.SendBackDao;
+import com.pms.model.EmpList;
+import com.pms.model.EmpLists;
+import com.pms.model.HRMailTemplate;
 
 @Controller
 public class AdminController {

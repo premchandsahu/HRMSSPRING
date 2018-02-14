@@ -157,7 +157,7 @@ tr:nth-child(even) {
 	
 	<c:if test="${a.ratingyn eq 'N'}">
 	<textarea name="selfappraisal[${status.index}].remarks" cols="140" rows="5" ${vreadonly}>${vremarks}</textarea>
-	<input type="hidden" name="selfappraisal[${status.index}].rating" value="${vrating}" maxlength="1" size="1"/>
+	<input type="hidden" name="selfappraisal[${status.index}].rating" value="${vrating}" maxlength="10" size="10"/>
 	<c:if test="${apprphaseid ne 1}">
 	<button type="button" class="accordion${a.sectioncolorder}" onclick="loadSelfForm('DET${a.questioncolorder}')">More</button>
 	</c:if>

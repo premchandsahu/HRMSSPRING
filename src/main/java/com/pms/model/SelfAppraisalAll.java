@@ -1,4 +1,4 @@
-package PMSNEW.PMSNEW;
+package com.pms.model;
 public class SelfAppraisalAll {
 	
 	private int apprempid;
