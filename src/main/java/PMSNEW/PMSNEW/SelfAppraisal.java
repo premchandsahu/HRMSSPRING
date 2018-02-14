@@ -119,7 +119,5 @@ public class SelfAppraisal {
 	public void setApprphaseid(int apprphaseid) {
 		this.apprphaseid = apprphaseid;
 	}
-	
-
 }
 

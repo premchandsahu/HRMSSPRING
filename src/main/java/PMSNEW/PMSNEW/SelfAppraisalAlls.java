@@ -11,7 +11,5 @@ public class SelfAppraisalAlls {
 
 	public void setSelfappraisalall(List<SelfAppraisalAll> selfappraisalall) {
 		this.selfappraisalall = selfappraisalall;
-	}
-	
-	
+	}	
 }

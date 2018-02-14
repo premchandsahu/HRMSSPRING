@@ -27,5 +27,4 @@ public String getIsFinalize() {
 public void setIsFinalize(String isFinalize) {
 	this.isFinalize = isFinalize;
 }
-
 }

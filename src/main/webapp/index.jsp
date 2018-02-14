@@ -1,4 +1,3 @@
-
 <style type="text/css">
   <%@include file="WEB-INF/styles/mystyle1.css" %>
 </style>

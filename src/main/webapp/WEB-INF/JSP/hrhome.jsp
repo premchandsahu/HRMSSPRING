@@ -17,32 +17,35 @@
 <p id="slogan">Information. Intelligence. Insight. </p>
 
 <button id="logout" style="float:right" onclick="location.href='/PMSSPRING/logout'">Logout</button> 
-</div><br><br>
+</div>
 <div>
 <p id ="pms">Performance Management System</p>
 </div>
 <br><br>
-<select>
+
+<select name="designation" onchange="location.href='/PMSSPRING/ViewRatingByTitleServlet/'+this.options[this.selectedIndex].value" >
 		<option value="Select Designation">Select Designation</option>
 	<c:forEach var="a" items="${designations}">   
-		<option value="${a.designation}">${a.designation}</option>
+		<option  value="${a.designation}">${a.designation}</option>
 	</c:forEach>
 </select>
 <br><br>
+
+<form:form method="post" action="/PMSSPRING/SendMailServlet" modelAttribute="emplist">
 <div class="container">
 <table class="table table-hover">
 <thead>
 <tr>
 		<th>S No.</th>
-		<th>ApprEmpId</th>
+		<th>Select</th>
 		<th>Job Title</th>
-		<th>Current Phase</th>
 		<th>Emp Name</th>
 		<th>Phase1 Rating</th>
 		<th>Appraiser Name</th>
 		<th>Phase2 Rating</th>
 		<th>Reviewer Name</th>
 		<th>Phase3 Rating</th>
+		<th>Current Phase</th>
 		<th>Link</th>
 </tr>
 <c:set var="srno" value="0"/>
@@ -50,20 +53,32 @@
 <c:set var="srno" value="${srno + 1}"/>
 <tr>
 <td>${srno}</td>
-<td>${a.apprempid}</td>
+<td><input type="checkbox" name="emplist[${srno}].ischecked" value="true"></td>
+
 <td>${a.job_title}</td>
-<td>${a.current_phase}</td>
 <td>${a.self_empname}</td>
 <td>${a.phase1_rating}</td>
 <td>${a.appraiser_name}</td>
 <td>${a.phase2_rating}</td>
 <td>${a.reviewer_name}</td>
 <td>${a.phase3_rating}</td>
-<td><a href=AppraiseServlet/4/${a.apprempid}?message=>Review</a></td>
+<td>${a.current_phase}</td>
+<td><a href=/PMSSPRING/AppraiseServlet/4/${a.apprempid}?message=>Review</a></td>
+<td><input type="hidden" value="${a.curr_phaseid }"><input type="hidden" value="${a.phase1mail}"><input type="hidden" value="${a.phase2mail}"><input type="hidden" value="${a.phase3mail}"></td>
+
+<td><input type="hidden" name="emplist[${srno}].apprempid" value = "${a.apprempid}">
+<input type="hidden" name="emplist[${srno}].curr_phaseid" value = "${a.curr_phaseid}">
+<input type="hidden" name="emplist[${srno}].self_empname" value = "${a.self_empname}">
+<input type="hidden" name="emplist[${srno}].appraiser_name" value = "${a.appraiser_name}">
+<input type="hidden" name="emplist[${srno}].reviewer_name" value = "${a.reviewer_name}">
+<input type="hidden" name="emplist[${srno}].phase1mail" value = "${a.phase1mail}">
+<input type="hidden" name="emplist[${srno}].phase2mail" value = "${a.phase2mail}">
+<input type="hidden" name="emplist[${srno}].phase3mail" value = "${a.phase3mail}"></td>
 </tr>
 </c:forEach>
 
 </table>
+<button type="submit" name="action" value="Remind">Remind</button>
+<button type="submit" name="action" value="SendBack">Send Back</button>
 </div>
-
-
+</form:form>

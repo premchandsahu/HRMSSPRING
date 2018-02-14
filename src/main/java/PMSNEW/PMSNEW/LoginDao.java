@@ -29,8 +29,7 @@ JdbcTemplate template;
 			Login glogin=template.queryForObject(sql,new LoginMapper());
 			cnt=checkPassword(ppassword,glogin.getPassword());
 			return glogin.getApprempid();
-		}
-		
+		}	
 	}  
 	
 	public List<Menu> getMenu(String pusername){  

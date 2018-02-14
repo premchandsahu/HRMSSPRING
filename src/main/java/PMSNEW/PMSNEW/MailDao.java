@@ -26,3 +26,5 @@ public List<MailTemplate> getMailDetails(int apprempid,int phaseid){
     });  
 } 
 }
+
+

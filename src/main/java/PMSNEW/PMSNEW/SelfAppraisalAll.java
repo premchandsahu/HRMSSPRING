@@ -212,5 +212,4 @@ public class SelfAppraisalAll {
 	public void setUser_name(String user_name) {
 		this.user_name = user_name;
 	}
-
 }

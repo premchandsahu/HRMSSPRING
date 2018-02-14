@@ -58,6 +58,7 @@ public class SelfAppraisalController {
 		apprempid=logindao.checkLogin(vusername,vpassword);
 		if (apprempid!=0)
 		{
+			
 		List<Menu> list=logindao.getMenu(vusername);  
 		modelandview.addObject("menulist",list);
 		modelandview.addObject("username",vusername);
@@ -141,12 +142,7 @@ public class SelfAppraisalController {
 		session.setAttribute("apprempid", sapprempid);
 		session.setAttribute("messsage", message);
 		return new ModelAndView("redirect:/AppraiseServletProcess");
-
-       
-       
-    }  
-	
-	
+  }  
 	
 	@RequestMapping(value = "/saveappraisal", method = RequestMethod.POST, params = "action")
 	public ModelAndView save(@ModelAttribute("selfappraisal") SelfAppraisals selfappraisals,@RequestParam("action") String actioname,HttpSession session) {
@@ -199,9 +195,7 @@ public class SelfAppraisalController {
 		vlink=vlink.equals("")?"redirect:/AppraiseServletProcess":vlink;
 		return new ModelAndView(vlink);
 		}
-	
-	
-	
+
 	@RequestMapping(value="/subordinate",method=RequestMethod.GET,params = "phaseid")
     public ModelAndView Subordinate(@RequestParam("phaseid") int subordinatephaseid){
 		ModelAndView modelandview=new ModelAndView();
@@ -235,13 +229,8 @@ public class SelfAppraisalController {
 	public void sendEmailToClient(String pemailSubject,String pemailMessage,String pemailToRecipient) {
 		final String emailSubject=pemailSubject;
 		final String emailMessage=pemailMessage;
-		// Reading Email Form Input Parameters		
-/*		emailSubject = request.getParameter("subject");
-		emailMessage = request.getParameter("message");
-		emailToRecipient = request.getParameter("mailTo");*/
 		final String emailToRecipient=pemailToRecipient;
 
-		// Logging The Email Form Parameters For Debugging Purpose
 		System.out.println("\nReceipient?= " + emailToRecipient + ", Subject?= " + emailSubject + ", Message?= " + emailMessage + "\n");
 
 		mailSenderObj.send(new MimeMessagePreparator() {
@@ -255,9 +244,6 @@ public class SelfAppraisalController {
 			}
 		});
 		System.out.println("\nMessage Send Successfully.... Hurrey!\n");
-
-/*		modelViewObj = new ModelAndView("success","messageObj","Thank You! Your Email Has Been Sent!");
-		return  modelViewObj;*/	
 	}
 	
 

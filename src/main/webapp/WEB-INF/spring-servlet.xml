@@ -61,6 +61,10 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
 <bean id="adao" class="PMSNEW.PMSNEW.AdminDao">  
 <property name="template" ref="jt"></property>  
+</bean>
+
+<bean id="sdao" class="PMSNEW.PMSNEW.SendBackDao">  
+<property name="template" ref="jt"></property>  
 </bean> 
 
 </beans>

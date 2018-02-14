@@ -7,11 +7,6 @@ public class SelfAppraisals {
 
 	public List<SelfAppraisal> selfappraisal;
 
-	public List<SelfAppraisal> getSelfAppraisal() {
-		return selfappraisal;
-	}
-
-
 	public List<SelfAppraisal> getSelfappraisal() {
 		return selfappraisal;
 	}

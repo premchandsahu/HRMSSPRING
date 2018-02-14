@@ -22,5 +22,4 @@ public class MailRows {
 	public void setEmp_name(String emp_name) {
 		this.emp_name = emp_name;
 	}
-	
 }

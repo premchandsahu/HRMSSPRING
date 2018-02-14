@@ -1,8 +1,9 @@
 package PMSNEW.PMSNEW;
 
-public class MailTemplate {
+public class HRMailTemplate {
 	String mailTo, mailToName, appraisee , fromName, subject, message;
 	int phaseid;
+	String sub_sendback,msg_sendback;
 	
 	public int getPhaseid() {
 		return phaseid;
@@ -14,7 +15,7 @@ public class MailTemplate {
 		return subject;
 	}
 	public void setSubject() {
-		subject=appraisee + " has submitted the appraisal form ";
+		subject="Appraisal form is pending for "+appraisee;
 	}
 
 	public String getMailTo() {
@@ -38,14 +39,6 @@ public class MailTemplate {
 		this.mailToName = mailToName;
 	}
 
-	public String getFromName() {
-		return fromName;
-	}
-
-	public void setFromName(String fromName) {
-		this.fromName = fromName;
-	}
-
 	public String getMessage()
 	{
 		return message;
@@ -53,6 +46,20 @@ public class MailTemplate {
 	public void setMessage()
 	{	
 			message= "Dear "+mailToName+","
-				+ "\n\n Appraisal form for "+appraisee+" is submitted by "+fromName+" and now available for your review.";
+				+ "\n\n Appraisal form for "+appraisee+" is pending in your phase. Kindly complete the process.";
 	}
+	public String getSub_sendback() {
+		return sub_sendback;
+	}
+	public void setSub_sendback() {
+		sub_sendback ="Appraisal form has been sent back for "+appraisee;
+	}
+	public String getMsg_sendback() {
+		return msg_sendback;
+	}
+	public void setMsg_sendback() {
+		msg_sendback ="Dear "+mailToName+","
+				+ "\n\n Appraisal form for "+appraisee+" has been sent back in your phase from HR. Kindly review it again.";
+	}
+	
 }
