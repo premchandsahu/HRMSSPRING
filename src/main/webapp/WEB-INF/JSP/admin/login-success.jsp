@@ -1,8 +1,6 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
-<style type="text/css">
-  <%@include file="mystyle1.css" %>
-</style>
+<style><%@include file="/WEB-INF/styles/mystyle1.css"%></style>
 <div id="div2">
 <p id="company">third(i)</p>
 <p id="slogan">Information. Intelligence. Insight. </p>

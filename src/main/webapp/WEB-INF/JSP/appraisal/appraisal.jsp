@@ -2,9 +2,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<style type="text/css">
-  <%@include file="mystyle1.css" %>
-</style>
+<style><%@include file="/WEB-INF/styles/mystyle1.css"%></style>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 

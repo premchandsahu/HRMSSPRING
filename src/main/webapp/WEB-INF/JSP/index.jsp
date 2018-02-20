@@ -1,6 +1,4 @@
-<style type="text/css">
-  <%@include file="WEB-INF/styles/mystyle1.css" %>
-</style>
+<style><%@include file="/WEB-INF/styles/mystyle1.css"%></style>
 <form action="login" method="post">
 <div id="div2">
 <p id="company">third(i)</p>
@@ -25,7 +23,7 @@
 <tr><br></tr>
 <tr>
 <td></td>
-<td><button id="logbutton" input type = "submit" value="login">LOGIN</button></td>
+<td><button id="logbutton" type = "submit" value="login">LOGIN</button></td>
 </tr>
 </table>
 </div>

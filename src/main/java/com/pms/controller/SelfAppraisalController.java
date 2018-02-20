@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,72 +55,50 @@ public class SelfAppraisalController {
 	private JavaMailSender mailSenderObj;
 
 	
-	
 	String vusername="";
 	String vpassword="";
 	int apprempid,appmode,appmodeapprempid;
 	List<SelfAppraisal> listsection;
 	List<Score> listscore;
+	
+	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public ModelAndView login(@ModelAttribute("login") Login login){
+	public ModelAndView login(@ModelAttribute("login") Login login, HttpSession session){
 		ModelAndView modelandview = new ModelAndView();
-		vusername=login.getUsername();
-		vpassword=login.getPassword();
-		
-		apprempid=logindao.checkLogin(vusername,vpassword);
-		if (apprempid!=0)
+		System.out.println(session.getAttribute("user"));
+		String sessionuser=(String) (session.getAttribute("user")==null?"":session.getAttribute("user"));
+		if(session!=null&& !sessionuser.equals("fake"))
 		{
-			
-		List<Menu> list=logindao.getMenu(vusername);  
-		modelandview.addObject("menulist",list);
-		modelandview.addObject("username",vusername);
-		modelandview.addObject("apprempid",apprempid);
-		modelandview.setViewName("login-success");
-        return modelandview;
+			vusername=login.getUsername();
+			vpassword=login.getPassword();
+			session.setAttribute("user", vusername);
+			apprempid=logindao.checkLogin(vusername,vpassword);
+			if (apprempid!=0)
+			{
+					
+				List<Menu> list=logindao.getMenu(vusername);  
+				modelandview.addObject("menulist",list);
+				modelandview.addObject("username",vusername);
+				modelandview.addObject("apprempid",apprempid);
+				modelandview.setViewName("/admin/login-success");
+		        return modelandview;
+			}
+	        else
+	        {
+		        modelandview.addObject("message","Login not found in Database");
+		        modelandview.addObject("username",vusername);
+		    	modelandview.setViewName("/admin/message");
+		        return modelandview;
+		    }
 		}
-        else
-        {
-        modelandview.addObject("message","Login not found in Database");
-        modelandview.addObject("username",vusername);
-    	modelandview.setViewName("message");
-        return modelandview;}
+		else
+		{
+			modelandview.setViewName("index");
+	        return modelandview;
+		}
 	}
-	
-	
-	@RequestMapping("/EditAppraiseServlet")
-    public ModelAndView selfAppraisal(){
-		ModelAndView modelandview=new ModelAndView();
-		List<SelfAppraisal> list=dao.getSelfAppraisal(vusername,"1");   
-		modelandview.addObject("list",list);
-		listsection=dao.getSelfAppraisalSections(vusername,1,1);   
-		modelandview.addObject("listsection",listsection);
-		modelandview.addObject("username",vusername);
-		modelandview.setViewName("selfappraisalang");
-        return modelandview;
-       
-       
-    }  
 
-	//@RequestMapping("/OldAppraiseServlet/{apprphaseid}/{apprempid}")
-	
-	@RequestMapping(value = "/OldAppraiseServlet/{apprphaseid}/{apprempid}", method=RequestMethod.POST)
-    public ModelAndView oldeditselfAppraisal(@PathVariable("apprphaseid") int apprphaseid, @PathVariable("apprempid") int apprempid){
-		ModelAndView modelandview=new ModelAndView();
-		List<SelfAppraisal> list=dao.getSelfAppraisal(vusername,"1");   
-		SelfAppraisals selfAppraisals = new SelfAppraisals();
-		selfAppraisals.setSelfappraisal(list);
-		modelandview.addObject("selfAppraisals",selfAppraisals);
-		listsection=dao.getSelfAppraisalSections(vusername,apprphaseid,apprempid);   
-		modelandview.addObject("listsection",listsection);
-		modelandview.addObject("username",vusername);
-		modelandview.addObject("apprphaseid",apprphaseid);
-		modelandview.addObject("apprempid", apprempid);
-		modelandview.setViewName("appraisal");
-        return modelandview;
-       
-       
-    }
-//	@RequestMapping(value = "/AppraiseServlet/{apprphaseid}/{apprempid}", method=RequestMethod.POST)
+	//	@RequestMapping(value = "/AppraiseServlet/{apprphaseid}/{apprempid}", method=RequestMethod.POST)
 	@RequestMapping(value="/AppraiseServletProcess",method=RequestMethod.GET)
     public ModelAndView editselfAppraisal(HttpSession session){
 		int sapprempid=0,sapprphaseid=0;
@@ -141,7 +120,7 @@ public class SelfAppraisalController {
 		listscore=dao.getScore(sapprempid);
 		modelandview.addObject("listscore",listscore);
 		
-		modelandview.setViewName("appraisal");
+		modelandview.setViewName("/appraisal/appraisal");
         return modelandview;
        
        
@@ -214,26 +193,26 @@ public class SelfAppraisalController {
 		modelandview.addObject("sublist",list);
 		modelandview.addObject("username",vusername);
 		modelandview.addObject("apprphaseid",subordinatephaseid);
-		modelandview.setViewName("subordinate");
+		modelandview.setViewName("/appraisal/subordinate");
         return modelandview;
     }  
 	
 
 	@RequestMapping(value="/logout",method=RequestMethod.GET)
-	public ModelAndView Logout(HttpServletRequest request)
+	public ModelAndView Logout(HttpServletResponse response,HttpSession session)
 	{
 		ModelAndView modelandview=new ModelAndView();
-		HttpSession session=request.getSession();
-		session.invalidate();
-        modelandview.addObject("message","You have been successfully logged out");
-        modelandview.addObject("username",vusername);
-    	modelandview.setViewName("message");
+		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+        response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+        response.setDateHeader("Expires", 0);
+        session.setAttribute("user", "fake");
+        
+		session.invalidate();session=null;
+		
+    	modelandview.setViewName("index");
         return modelandview;
-	}
-	
-
-	
-	
+		
+	}	
 	
 	//@RequestMapping("sendEmail")
 	//@RequestMapping(value = "sendEmail", method = RequestMethod.GET)

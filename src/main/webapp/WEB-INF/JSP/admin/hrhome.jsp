@@ -7,9 +7,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<style type="text/css">
-  <%@include file="mystyle1.css" %>
-</style>
+<style><%@include file="/WEB-INF/styles/mystyle1.css"%></style>
 <div id="div2">
 <p id="company">third(i)</p>
 <p id="slogan">Information. Intelligence. Insight. </p>

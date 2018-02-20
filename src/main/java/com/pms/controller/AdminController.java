@@ -43,7 +43,7 @@ public class AdminController {
 		modelandview.addObject("designations",designations);
 		
 		modelandview.addObject("ratinglist",ratinglist);
-		modelandview.setViewName("hrhome");
+		modelandview.setViewName("/admin/hrhome");
         return modelandview;
 		
 	}
@@ -54,7 +54,7 @@ public class AdminController {
 		ratinglist =adao.getEmpListByTitle(designation);
 		modelandview.addObject("designations",designations);
 		modelandview.addObject("ratinglist",ratinglist);
-		modelandview.setViewName("hrhome");
+		modelandview.setViewName("/admin/hrhome");
         return modelandview;
 		
 	}
@@ -124,7 +124,7 @@ public class AdminController {
 		modelandview.addObject("designations",designations);
 		
 		modelandview.addObject("ratinglist",ratinglist);
-		modelandview.setViewName("hrhome");
+		modelandview.setViewName("/admin/hrhome");
         return modelandview;
 }
 	public void sendEmailToEmp(String pemailSubject,String pemailMessage,String pemailToRecipient) {
